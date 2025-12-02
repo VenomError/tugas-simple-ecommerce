@@ -1,35 +1,27 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\CostumerAdminController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\OrderAdminController;
-use App\Http\Controllers\ProductAdminController;
-use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\MenuController;
 
 // LANDING 
-Route::get('/', [PageController::class, 'index']);
-Route::get('/shop', [PageController::class, 'shop']);
-Route::get('/wishlist', [PageController::class, 'wishlist']);
-Route::get('/cart', [CartController::class, 'cart']);
-Route::get('/checkout', [CheckoutController::class, 'index']);
-Route::get('/auth', [PageController::class, 'auth']);
-Route::get('/product/{slug}/detail', [ProductController::class, 'detail']);
+Route::get('/', [MenuController::class, 'index']);
+Route::get('/shop', [MenuController::class, 'shop']);
+Route::get('/wishlist', [MenuController::class, 'wishlist']);
+Route::get('/cart', [MenuController::class, 'cart']);
+Route::get('/checkout', [MenuController::class, 'checkout']);
+Route::get('/auth', [MenuController::class, 'auth']);
+Route::get('/product/{slug}/detail', [MenuController::class, 'detailProduct']);
 
 // DASHBOARD
-Route::get('/admin', [AdminController::class, 'index']);
-Route::get('/admin/{product}/invoice', [ProductAdminController::class, 'invoice']);
+Route::get('/admin', [MenuController::class, 'dashboardIndex']);
+Route::get('/admin/{product}/invoice', [MenuController::class, 'produtInvoice']);
 
-Route::get('/admin/category', [ProductAdminController::class, 'category']);
-Route::get('/admin/product', [ProductAdminController::class, 'index']);
-Route::get('/admin/product/tambah', [ProductAdminController::class, 'tambah']);
-Route::get('/admin/product/{slug}/detail', [ProductAdminController::class, 'detail']);
+Route::get('/admin/category', [MenuController::class, 'productCategory']);
+Route::get('/admin/product', [MenuController::class, 'productIndex']);
+Route::get('/admin/product/tambah', [MenuController::class, 'productTambah']);
+Route::get('/admin/product/{slug}/detail', [MenuController::class, 'productDetail']);
 
-Route::get('/admin/order', [OrderAdminController::class, 'index']);
-Route::get('/admin/order/{order}/detail', [OrderAdminController::class, 'detail']);
+Route::get('/admin/order', [MenuController::class, 'orderIndex']);
+Route::get('/admin/order/{order}/detail', [MenuController::class, 'orderDetail']);
 
-Route::get('/admin/customer', action: [CostumerAdminController::class, 'index']);
+Route::get('/admin/customer', action: [MenuController::class, 'costumerIndex']);
