@@ -10,6 +10,12 @@ class MenuController extends Controller
     {
         return view('landing.home');
     }
+
+    public function account()
+    {
+        return view('landing.account');
+    }
+
     public function shop()
     {
         return view('landing.shop');
@@ -34,7 +40,8 @@ class MenuController extends Controller
         return view('landing.checkout');
     }
 
-    public function detailProduct(){
+    public function detailProduct()
+    {
         return view('landing.product-detail');
     }
 
@@ -76,7 +83,8 @@ class MenuController extends Controller
         return view('admin.order-detail');
     }
 
-     public function costumerIndex(){
+    public function costumerIndex()
+    {
         return view('admin.costumer');
     }
 }

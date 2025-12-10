@@ -1,16 +1,23 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 
 // LANDING 
 Route::get('/', [MenuController::class, 'index']);
+Route::get('/account', [MenuController::class, 'account']);
 Route::get('/shop', [MenuController::class, 'shop']);
 Route::get('/wishlist', [MenuController::class, 'wishlist']);
 Route::get('/cart', [MenuController::class, 'cart']);
 Route::get('/checkout', [MenuController::class, 'checkout']);
-Route::get('/auth', [MenuController::class, 'auth']);
 Route::get('/product/{slug}/detail', [MenuController::class, 'detailProduct']);
+
+// AUTH CONTROLLER
+Route::get('/auth', [MenuController::class, 'auth']);
+Route::post('/login', [AuthController::class, 'loginProcess']);
+Route::post('/register', [AuthController::class, 'registerProcess']);
+Route::get('/logout', [AuthController::class, 'logout']);
 
 // DASHBOARD
 Route::get('/admin', [MenuController::class, 'dashboardIndex']);

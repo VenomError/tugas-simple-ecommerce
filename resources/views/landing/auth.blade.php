@@ -28,16 +28,34 @@
                         </div>
                         <div class="tab-content">
                             <div id="lg1" class="tab-pane active">
+
                                 <div class="login-form-container">
                                     <div class="login-register-form">
-                                        <form action="#" method="post">
-                                            <input type="text" name="user-name" placeholder="Username">
-                                            <input type="password" name="user-password" placeholder="Password">
+                                        @session('success')
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endsession
+                                        @session('error')
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ session('error') }}
+                                            </div>
+                                        @endsession
+                                        <form action="/login" method="post">
+                                            @csrf
+                                            @error('email')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                            <input type="email" name="email" placeholder="Email">
+                                            @error('password')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                            <input type="password" name="password" placeholder="Password">
                                             <div class="button-box">
                                                 <div class="login-toggle-btn">
-                                                    <input type="checkbox">
+                                                    <input type="checkbox" name="remember">
                                                     <label>Remember me</label>
-                                                    <a href="#">Forgot Password?</a>
+                                                    {{-- <a href="#">Forgot Password?</a> --}}
                                                 </div>
                                                 <button type="submit">Login</button>
                                             </div>
@@ -48,10 +66,20 @@
                             <div id="lg2" class="tab-pane">
                                 <div class="login-form-container">
                                     <div class="login-register-form">
-                                        <form action="#" method="post">
-                                            <input type="text" name="user-name" placeholder="Username">
-                                            <input type="password" name="user-password" placeholder="Password">
-                                            <input name="user-email" placeholder="Email" type="email">
+                                        <form action="/register" method="post">
+                                            @csrf
+                                            @error('name')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                            <input type="text" name="name" placeholder="Name">
+                                            @error('email')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                            <input type="email" name="email" placeholder="Email">
+                                            @error('password')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                            <input type="password" name="password" placeholder="Password">
                                             <div class="button-box">
                                                 <button type="submit">Register</button>
                                             </div>

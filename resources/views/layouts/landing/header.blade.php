@@ -5,7 +5,8 @@
                 <div class="row align-items-center">
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo">
-                            <a href="{{ url('/') }}"><img src="{{ asset('assets/images/logo/logo.png') }}" alt="logo"></a>
+                            <a href="{{ url('/') }}"><img src="{{ asset('assets/images/logo/logo.png') }}"
+                                    alt="logo"></a>
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-7">
@@ -34,7 +35,8 @@
                                 </div>
                             </div>
                             <div class="same-style-2">
-                                <a href="{{ url('/auth') }}"><i class="icon-user"></i></a>
+                                <a href="{{ url(auth()->check() ? '/account' : '/auth') }}"><i
+                                        class="icon-user"></i></a>
                             </div>
                             <div class="same-style-2">
                                 <a href="{{ url('/wishlist') }}"><i class="icon-heart"></i><span
