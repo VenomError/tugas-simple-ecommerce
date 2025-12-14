@@ -1,4 +1,5 @@
 @extends('layouts.landing')
+
 @section('title', 'Account')
 @section('content')
     <div class="breadcrumb-area bg-gray">
