@@ -50,7 +50,7 @@ class AuthController extends Controller
             session()->flash('error', $err->getMessage());
             throw $err;
         } catch (\Throwable $th) {
-            session()->flash('error', $err->getMessage());
+            session()->flash('error', $th->getMessage());
             // throw $th;
         }
     }
